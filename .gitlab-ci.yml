@@ -1,0 +1,24 @@
+image: ruby:2.3 # going to find a better barebone image,
+                #but this contains all dependencies for now
+before_script:
+  - apt-get update
+  - apt-get --yes --force-yes install rsync ssh
+
+code-deploy:
+  stage: deploy
+  script:
+  - echo "${SSH_PRIVATE_KEY}" > id_rsa
+  - chmod 400 id_rsa
+  - mkdir "${HOME}/.ssh"
+  - echo "${SSH_HOST_KEY}" > "${HOME}/.ssh/known_hosts"
+  - rsync -hrvz --delete --exclude='\..*' -e 'ssh -i id_rsa' ./ urobotics@minosp.com:~/catkin_ws/
+
+.code-test:
+  script:
+  - ssh -i id_rsa urobotics@minosp.com # and run a script that will
+  # run all the test and report the results
+  # output the results
+
+  only:
+  - master
+
