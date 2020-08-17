@@ -6,8 +6,8 @@ import rospy
 from std_msgs.msg import String
 from mavros_msgs.srv import CommandBool, SetMode
 
-from robosub import MotorOutput
-from robosub.controllers import *
+from controls import MotorOutput
+from controls.controllers import *
 
 
 class ControlMode:

@@ -5,10 +5,10 @@ from __future__ import division, print_function
 import rospy
 from std_msgs.msg import String
 from geometry_msgs.msg import Vector3
-from robosub.IMUListener import imu
+from controls.IMUListener import imu
 from PIDController import PID
 from threading import Thread
-from robosub.MotorOutput import setMotor
+from controls.MotorOutput import setMotor
 import sys
 
 '''

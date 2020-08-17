@@ -18,12 +18,12 @@ import rospy
 rospy.init_node("SubControls")
 rospy.sleep(0.5)
 
-from robosub import ControlMode, MotorOutput
-from robosub.utils import VideoSaver, TelemetrySaver
-from robosub.IMUListener import imu
-from robosub.YawListener import yaw
-from robosub.RazorIMU import razor
-from robosub.controllers import *
+from controls import ControlMode, MotorOutput
+from controls.utils import VideoSaver, TelemetrySaver
+from controls.IMUListener import imu
+from controls.YawListener import yaw
+from controls.RazorIMU import razor
+from controls.controllers import *
 
 import traceback
 import sys

@@ -6,7 +6,7 @@ with open("README.md", "r") as f:
 print(setuptools.find_packages())
 
 setuptools.setup(
-    name="robosub", 
+    name="controls", 
     version="0.0.1",
     author="Underwater Robotics at Berkeley",
     description="Code for the controls of our autonomous submarine",
