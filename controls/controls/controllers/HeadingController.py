@@ -6,8 +6,8 @@ import rospy
 from std_msgs.msg import String, Float64
 from PIDController import PID
 from threading import Thread, Lock
-from controls.getYaw import yawl
-from controls.setRCOutput import setMotor
+from controls.YawListener import yaw
+from controls.MotorOutput import setMotor
 
 '''
 A python script to practice receiving ROS messages
@@ -19,7 +19,7 @@ class HeadingController():
     def __init__(self):
         self.chatter_sub = rospy.Subscriber("/control/heading", Float64, self.chatter_callback)
         self.pid = PID(0.2, 0.0, 0.0)
-        self.yaw = lambda: yawl.yaw
+        self.yaw = lambda: yaw.yaw
         self.rate = rospy.Rate(50)
         self.thread = None
 

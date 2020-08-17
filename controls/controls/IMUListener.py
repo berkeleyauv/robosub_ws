@@ -6,7 +6,6 @@ import rospy
 from std_msgs.msg import String
 from geometry_msgs.msg import Twist
 from sensor_msgs.msg import Imu
-from getYaw import yawl
 import cv2
 from datetime import datetime
 
