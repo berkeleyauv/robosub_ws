@@ -12,6 +12,7 @@ class ImageListener():
 
     def callback(self, img_msg):
         bridge = CvBridge()
+        # Stores as a BGR array for OpenCV.
         cv_image = bridge.imgmsg_to_cv2(img_msg, desired_encoding='bgr8')
         self.images.append(cv_image)
 
