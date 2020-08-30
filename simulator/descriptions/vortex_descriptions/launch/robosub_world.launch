@@ -1,13 +1,13 @@
 <?xml version="1.0" ?>
 
-<!-- 
+<!--
      Base code written by Kristoffer Rakstad Solberg, Student
      Copyright (c) 2019 Manta AUV, Vortex NTNU.
      All rights reserved. -->
 
 <launch>
     <arg name="gui" default="true"/>
-    <arg name="paused" default="false"/>
+    <arg name="paused" default="false"/> <!--default should be false for the robot to move-->
     <arg name="set_timeout" default="false"/>
     <arg name="timeout" default="0.0"/>
 
@@ -47,7 +47,7 @@
                     pose:
                         position: [0, -50, -10]
                 east:
-                    plane: [100, 0.1, 20]   
+                    plane: [100, 0.1, 20]
                     pose:
                         position: [0, 50, -10]
         </rosparam>

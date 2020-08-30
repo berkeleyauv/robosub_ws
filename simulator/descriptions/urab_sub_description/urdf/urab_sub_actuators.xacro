@@ -2,7 +2,7 @@
 <!-- Copyright (c) 2016 The UUV Simulator Authors.
      All rights reserved.
 
-     Contributed by Kristoffer Rakstad Solberg, 
+     Contributed by Kristoffer Rakstad Solberg,
      Student2019 Manta AUV, Vortex NTNU. -->
 
 
@@ -16,23 +16,23 @@
   <!-- Thruster joint and link snippet -->
 <!-- Time constant for thruster dynamics: rpm = K / (Ts + 1)
     <rotorConstant> T200, 12V for a 2nd order curve fit: tau = gain * abs(x)*x -->
-  <xacro:macro name="thruster_macro" 
+  <xacro:macro name="thruster_macro"
     params="namespace thruster_id *origin">
-    <!-- Macro definition here: 
+    <!-- Macro definition here:
     https://github.com/uuvsimulator/uuv_simulator/blob/5684de4827729f163f118cdc3a841011ef25ed8d/uuv_gazebo_plugins/uuv_gazebo_ros_plugins/urdf/thruster_snippets.xacro#L135 -->
     <xacro:thruster_module_first_order_basic_fcn_macro
       namespace="${namespace}"
       thruster_id="${thruster_id}"
       mesh_filename="${prop_mesh_file_cw}"
-      dyn_time_constant="0.2"     
-      rotor_constant="0.000004">  
+      dyn_time_constant="0.2"
+      rotor_constant="0.000004">
       <xacro:insert_block name="origin"/>
     </xacro:thruster_module_first_order_basic_fcn_macro>
   </xacro:macro>
 
 <!-- Time constant for thruster dynamics: rpm = K / (Ts + 1)
     <rotorConstant> T200, 12V for a 2nd order curve fit: tau = gain * abs(x)*x -->
-  <xacro:macro name="thruster_macro_ccw" 
+  <xacro:macro name="thruster_macro_ccw"
     params="namespace thruster_id *origin">
     <xacro:thruster_module_first_order_basic_fcn_macro
       namespace="${namespace}"
@@ -47,36 +47,62 @@
 <!-- Thrusters probably advertise to these topics:
      https://github.com/uuvsimulator/uuv_simulator/blob/5684de4827729f163f118cdc3a841011ef25ed8d/uuv_gazebo_plugins/uuv_gazebo_ros_plugins/src/ThrusterROSPlugin.cc#L153-L168 -->
 
-<!-- Top thrusters --> 
+<!-- Top thrusters -->
 
-  <xacro:thruster_macro namespace="${namespace}" thruster_id="0"> <!-- heave back left prop up-->
+  <xacro:thruster_macro namespace="${namespace}" thruster_id="0">
   <origin xyz="-0.12070 0.12070 0" rpy="0 -1.5707963268 0"/>
   </xacro:thruster_macro>
-  <xacro:thruster_macro namespace="${namespace}" thruster_id="1"> <!-- heave bacl right prop up-->
+  <xacro:thruster_macro namespace="${namespace}" thruster_id="1">
     <origin xyz="-0.12070 -0.12070 0" rpy="0 -1.5707963268 0"/>
   </xacro:thruster_macro>
-  <xacro:thruster_macro namespace="${namespace}" thruster_id="2"> <!-- heave front left prop up-->
+  <xacro:thruster_macro namespace="${namespace}" thruster_id="2">
     <origin xyz="0.12070 0.12070 0" rpy="0 -1.5707963268 0"/>
   </xacro:thruster_macro>
-  <xacro:thruster_macro namespace="${namespace}" thruster_id="3"> <!-- heave front right prop up-->
+  <xacro:thruster_macro namespace="${namespace}" thruster_id="3">
     <origin xyz="0.12070 -0.12070 0" rpy="0 -1.5707963268 0"/>
   </xacro:thruster_macro>
 
+  <!-- <xacro:thruster_macro namespace="${namespace}" thruster_id="0">
+  <origin xyz="-0.143825 0.280455 0.230245" rpy="0 -1.5707963268 0"/>
+  </xacro:thruster_macro>
+  <xacro:thruster_macro namespace="${namespace}" thruster_id="1">
+    <origin xyz="-0.143825 -0.280455 0.230245" rpy="0 -1.5707963268 0"/>
+  </xacro:thruster_macro>
+  <xacro:thruster_macro namespace="${namespace}" thruster_id="2">
+    <origin xyz="0.143825 0.280455 0.230245" rpy="0 -1.5707963268 0"/>
+  </xacro:thruster_macro>
+  <xacro:thruster_macro namespace="${namespace}" thruster_id="3">
+    <origin xyz="0.143825 -0.280455 0.230245" rpy="0 -1.5707963268 0"/>
+  </xacro:thruster_macro> -->
+
  <!-- Front thrusters -->
 
-  <xacro:thruster_macro namespace="${namespace}" thruster_id="6"> <!-- lat front left-->
-    <origin xyz="0.20506 0.20506 0" rpy="${0*d2r} ${0*d2r} ${135*d2r}"/> 
+  <xacro:thruster_macro namespace="${namespace}" thruster_id="6">
+    <origin xyz="0.20506 0.20506 0" rpy="${0*d2r} ${0*d2r} ${135*d2r}"/>
   </xacro:thruster_macro>
-  <xacro:thruster_macro namespace="${namespace}" thruster_id="7"> <!-- lat front right -->
+  <xacro:thruster_macro namespace="${namespace}" thruster_id="7">
     <origin xyz="0.20506 -0.20506 0" rpy="${0*d2r} ${0*d2r} ${-135*d2r}"/>
   </xacro:thruster_macro>
 
- <!-- Back thrusters -->
+  <!-- <xacro:thruster_macro namespace="${namespace}" thruster_id="6">
+    <origin xyz="0.192247 0.286933 0.0721539" rpy="${0*d2r} ${0*d2r} ${135*d2r}"/>
+  </xacro:thruster_macro>
+  <xacro:thruster_macro namespace="${namespace}" thruster_id="7">
+    <origin xyz="0.192247 -0.286933 0.0721539" rpy="${0*d2r} ${0*d2r} ${-135*d2r}"/>
+  </xacro:thruster_macro> -->
 
-  <xacro:thruster_macro namespace="${namespace}" thruster_id="4"> <!-- lat back left-->
-    <origin xyz="-0.20506 0.20506 0" rpy="${0*d2r} ${0*d2r} ${45*d2r}"/>
+ <!-- Back thrusters -->
+ <xacro:thruster_macro namespace="${namespace}" thruster_id="4"> <!-- lat back left-->
+   <origin xyz="-0.20506 0.20506 0" rpy="${0*d2r} ${0*d2r} ${45*d2r}"/>
+ </xacro:thruster_macro>
+ <xacro:thruster_macro namespace="${namespace}" thruster_id="5"> <!-- lat back right -->
+   <origin xyz="-0.20506 -0.20506 0" rpy="${0*d2r} ${0*d2r} ${-45*d2r}"/>
+ </xacro:thruster_macro>
+
+  <!-- <xacro:thruster_macro namespace="${namespace}" thruster_id="4">
+    <origin xyz="-0.192247 0.286933 0.0721539" rpy="${0*d2r} ${0*d2r} ${45*d2r}"/>
   </xacro:thruster_macro>
-  <xacro:thruster_macro namespace="${namespace}" thruster_id="5"> <!-- lat back right -->
-    <origin xyz="-0.20506 -0.20506 0" rpy="${0*d2r} ${0*d2r} ${-45*d2r}"/>
-  </xacro:thruster_macro>
+  <xacro:thruster_macro namespace="${namespace}" thruster_id="5">
+    <origin xyz="-0.192247 -0.286933 0.0721539" rpy="${0*d2r} ${0*d2r} ${-45*d2r}"/>
+  </xacro:thruster_macro> -->
 </robot>
