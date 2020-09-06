@@ -3,7 +3,7 @@ from sensor_msgs.msg import Image
 from cv_bridge import CvBridge
 
 class ImageListener:
-    """ Subscribes to ROS Image messages. Used for getting camera image data
+    """ Abstract class. Subscribes to ROS Image messages. Used for getting camera image data
     from the simulator and converting it for OpenCV. """
 
     def callback(self, img_msg):
