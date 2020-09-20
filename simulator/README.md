@@ -2,6 +2,16 @@
 
 This will set up Underwater Robotics @ Berkeley's team simulator.
 
+# VMWare Instructions
+
+Install VMWare Workstation Pro/Fusion with Berkeley's license from here https://software.berkeley.edu/vmware. Then download a base Ubuntu 16 desktop image from https://releases.ubuntu.com/16.04/. Now create a new virtual machine and give the Ubuntu image as the disc file. Now you can run the VM and set it up with your username and password.
+
+After you first log in, open up a terminal with Ctrl+Alt+T or search for it and then get our code with
+
+    git clone https://github.com/berkeleyauv/robosub.git
+
+Now you can follow the commands in the Dockerfile to install ROS, Gazebo, and the UUV simulator.
+
 # Mac Instructions
 
 ## --Installation--
