@@ -17,6 +17,11 @@ class ImageListener:
         rospy.sleep(time) # time is in seconds
         return self.images
 
+    def get_images_forever(self):
+        self.images = []
+        rospy.spin()
+        return self.images
+
 class FrontCameraListener(ImageListener):
     """ Gets image data from the front camera. """
     def __init__(self):
@@ -30,7 +35,9 @@ class UnderCameraListener(ImageListener):
             Image, self.callback)
 
 if __name__ == '__main__':
+    # not sure if this should be moved into the ImageListener class
     rospy.init_node('img_listener', anonymous=True)
+
     front_listen = FrontCameraListener()
     imgs = front_listen.get_images(1.0)
 
