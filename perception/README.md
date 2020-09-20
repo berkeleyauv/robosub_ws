@@ -1,4 +1,20 @@
 # Perception Code Overview
+
+## Installation
+
+We will use Conda for managing environments. We recommend installing Miniconda for Python 3.8 [here](https://docs.conda.io/en/latest/miniconda.html).
+Then create an environment with
+
+    conda create -n urobotics python3.7
+
+activate it with
+
+    conda activate urobotics
+
+and install all dependencies with
+
+    pip install -r requirements.txt
+
 ## misc:
 Misc code, camera calibration etc.
 
