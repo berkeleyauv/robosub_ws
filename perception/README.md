@@ -11,6 +11,10 @@ activate it with
 
     conda activate urobotics
 
+clone the repo in a directory of your choice
+
+    git clone https://github.com/berkeleyauv/robosub.git 
+
 and install all dependencies with
 
     pip install -r requirements.txt
