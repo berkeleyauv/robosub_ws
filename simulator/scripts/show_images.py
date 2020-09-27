@@ -9,7 +9,7 @@ def display_camera_images(listener, time, window_name="video"):
     imgs = listener.get_images(1.0)
     for frame in imgs:
         cv2.imshow(window_name, frame)
-         # you need to hold a key to see video progress, need to fix this
+         # you need to hold a key to see the video progress. Press q to quit.
         if cv2.waitKey(0) & 0xFF == ord('q'):
             break
     cv2.destroyAllWindows()
