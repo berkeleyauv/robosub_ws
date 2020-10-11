@@ -1,12 +1,12 @@
 <?xml version="1.0" ?>
 
-<!-- 
+<!--
      Base code written by Kristoffer Rakstad Solberg, Student
      Copyright (c) 2019 Manta AUV, Vortex NTNU.
      All rights reserved. -->
 
 <launch>
-  <include file="$(find vortex_descriptions)/launch/robosub_world.launch"/>
-  <include file="$(find urab_sub_description)/launch/upload_urab_sub.launch"/>
-  <include file="$(find urab_sub_thruster_manager)/launch/thruster_manager.launch"/> 
+  <include file="$(find vortex_descriptions)/launch/robosub_world.launch" pass_all_args="true"/>
+  <include file="$(find urab_sub_description)/launch/upload_urab_sub.launch" pass_all_args="true"/>
+  <include file="$(find urab_sub_thruster_manager)/launch/thruster_manager.launch"/>
 </launch>
