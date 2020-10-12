@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>robosub</name>
-  <version>0.0.0</version>
-  <description>The robosub package</description>
+  <name>controls</name>
+  <version>0.0.1</version>
+  <description>The controls package for Underwater Robotics at Berkeley</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->
@@ -51,10 +51,17 @@
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>rospy</build_depend>
   <build_depend>mavros</build_depend>
+  <build_depend>message_generation</build_depend>
+  <build_depend>roslaunch</build_depend>
+
   <build_export_depend>rospy</build_export_depend>
   <build_export_depend>mavros</build_export_depend>
+  
   <exec_depend>rospy</exec_depend>
   <exec_depend>mavros</exec_depend>
+  <exec_depend>message_runtime</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->
