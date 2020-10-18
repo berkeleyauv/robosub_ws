@@ -10,7 +10,7 @@ sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture)] http://packages.ros.or
 
 sudo apt update -y
 sudo apt install -y ros-eloquent-desktop
-source /opt/ros/foxy/setup.bash
+source /opt/ros/eloquent/setup.bash
 sudo apt install -y -qq python3-argcomplete python3-colcon-common-extensions python-rosdep python3-vcstool
 sudo rosdep init
 rosdep update
