@@ -12,6 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   mavros
   message_generation
   roslaunch
+  razor_imu_9dof
 )
 
 roslaunch_add_file_check(launch)
