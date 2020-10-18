@@ -11,9 +11,6 @@ sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture)] http://packages.ros.or
 sudo apt update -y
 sudo apt install -y ros-eloquent-desktop
 source /opt/ros/foxy/setup.bash
-sudo apt install -y -qq python3-argcomplete
-sudo apt install -y -qq python3-colcon-common-extensions
-sudo apt-get -qq -y install python-rosdep
+sudo apt install -y -qq python3-argcomplete python3-colcon-common-extensions python-rosdep python3-vcstool
 sudo rosdep init
 rosdep update
-sudo rosdep fix-permissions
