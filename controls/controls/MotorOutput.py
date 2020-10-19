@@ -35,4 +35,3 @@ if __name__ == '__main__':
     rospy.sleep(.5)
 
 setMotor = SetMotors()
-print("SetMotor node running")

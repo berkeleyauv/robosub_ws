@@ -7,9 +7,7 @@ from std_msgs.msg import String
 from geometry_msgs.msg import PoseStamped, Twist
 from mavros_msgs.msg import OverrideRCIn
 
-"""
-Sends messages to Pixhawk to move motors 
-"""
+"""Sends messages to Pixhawk to move motors"""
 
 MAX_THRUST = 1900
 MIN_THRUST = 1100
@@ -22,14 +20,13 @@ class PixhawkInterface():
         self.sub = rospy.Subscriber("/sub/cmd_vel", Twist, self.thrust_callback)
         self.pub = rospy.Publisher("/mavros/rc/override", OverrideRCIn, queue_size=10)
 
-        #self.chatter_pub = rospy.Publisher("/mavros/manual_control/send", ManualControl, queue_size=1)
-        #self.chat_frequency = rospy.Rate(0.25)
 
     def scale_thrust(self, num):
         offset = (MAX_THRUST + MIN_THRUST) // 2
         scale = (MAX_THRUST - MIN_THRUST) // 2
         return scale * num + offset
         
+
     def thrust_callback(self, vel):
         """ Send messages on topic once we receive next controls input.
         A
@@ -65,4 +62,3 @@ if __name__ == '__main__':
     interface = PixhawkInterface()
     while not rospy.is_shutdown():
         rospy.spin()
-
