@@ -1,24 +1,26 @@
 # robosub
 
-Main top level repository for organizing urab robosub related code
+Top level repository for the UR@B AUV for the Robosub competition
+
 ***
 ## Getting Started
-Start by making sure ROS2 is installed on Ubuntu 18.04 Follow [this](https://index.ros.org/doc/ros2/Installation/Eloquent/Linux-Install-Debians/) or run the `intsall-ros-eloquent.sh` script from `scripts/install_scripts` (this is the preferred method of installation).
+Start by making sure ROS2 and [vcs tool](https://github.com/dirk-thomas/vcstool) is installed on Ubuntu 18.04. The recommended installation process is by calling 
+
+    scripts/install_scripts/install-ros-eloquent.sh
+
+or you can follow [this](https://index.ros.org/doc/ros2/Installation/Eloquent/Linux-Install-Debians/).
 ***
-Urab takes advantage of the [vcs tool](https://github.com/dirk-thomas/vcstool) in order to pull and
-manage repositories and dependencies. A breakdown of the various `.repos` files is below:
+UR@B takes advantage of `vcs` in order to pull and manage repositories and dependencies. 
+
+A breakdown of the various `.repos` files is below:
 #### Overlay Repos
 
 Overlay repos are repositories directly managed by urab and that provide the core software for the platform.
 
-`development.repos`  - pulls the development head of all core urab packages (used for development/nightly builds)
+`master.repos` - pull the master head of all core UR@B packages
 
-`master.repos` - pull the master head of all core urab packages (used for master builds)
-
-**Pro Tip**: To avoid having the keep entering your github username and password for
-pushing/pulling private repos you can run `git config --global credentials.helper store`
-and then run a git command such as `git push` that requires authentication so you can enter and save your
-username and password to the machine.
+**Pro Tip**: To avoid having the keep entering your github username and password for pushing private repos you can run `git config --global credentials.helper store`
+to save your username and password to the machine. However, make sure you only do this on a computer that only you use since it stores your password in unencrypted plaintext.
 
 ***
 #### Underlay Repos
@@ -36,25 +38,26 @@ branch). This is used for nightly and development builds.
 This is used for master builds.
 ***
 
-### Building
-In order to build the code make sure to run `vcs import < ***.repos` in the `ws/src` repository. This
+### Installing
+In order to build the code, make sure to run `vcs import < {file}.repos` in the `src/` folder. This
 should be done for both the desired underlay and overlay .repos file in order to ensure that all
 dependencies are handled and that the code is at the correct version. For example if I want to build the
-code that is in the master release, I would  run from within `ws/src` the following:
-`vcs import < ../../repos/master.repos` and `vcs import < ../../repos/deps.repos`.
+code that is in the master release, I would  run from within `src/` the following:
+`vcs import < ../repos/master.repos` and `vcs import < ../repos/deps.repos`.
 
 **Pro Tip**: If you want to update repositories (fetch remote) installed with vcs simply run `vcs custom --args remote update` in the
 directory with the repositories you wish to update.
 
-Once you have performed the above tasks you will want to finish up by running the rosdep command
+Once you have performed the above tasks you will want to finish up by running the `rosdep` command
 to cover any minor deps managed entirely by the ROS2 open source community.
-`rosdep install --from-paths src --ignore-src -r -y`
-You should now be able to successfully run `colcon build --symlink-install` to compile your code. For release, make sure to build with the release compilation flag set using the following command `colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release`.
+
+    rosdep install --from-paths src --ignore-src -r -y
+
+You should now be able to successfully run `colcon build --symlink-install` to build your workspace.
 
 ## Contributing and Code Versioning
 Development should proceed as follows.
-- All new features require a new branch on the package it will be in. These branches should be made off the development branch.
-- When done, new features will be merged into the development branch of each package for integration testing.
-- Once a stable fully tested version of the development code is finished, it will be pushed to the master branch.
+- All new features require a new branch on the package it will be in. These branches should be made off the master branch.
+- Once a stable fully tested version of the branch code is finished, it will be pushed to the master branch.
 
 Remember to add any new repos that are added in one of the `.repos` files to the `.gitignore`.
