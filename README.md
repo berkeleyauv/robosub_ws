@@ -4,7 +4,7 @@ Top level repository for the UR@B AUV for the Robosub competition
 
 ***
 ## Getting Started
-Start by making sure ROS2 and [vcs tool](https://github.com/dirk-thomas/vcstool) is installed on Ubuntu 18.04. The recommended installation process is by calling 
+Start by making sure ROS2 and [vcs tool](https://github.com/dirk-thomas/vcstool) is installed on Ubuntu 18.04. The recommended installation process is by running 
 
     scripts/install_scripts/install-ros-eloquent.sh
 
@@ -29,7 +29,7 @@ Underlay repos are repositories that are managed primarily by other sources incl
 required as dependencies for the Overlay repos in a semi-managed state (i.e. `apt install` either do not exist or
 do not give the desired control over the software versioning, etc.).
 
-`deps.repos` - pulls all "underlay" external dependencies at the head of their "development" branch.
+`deps.repos` - pulls all external dependencies at the head of their "development" branch.
 Note the branch name may not be development but should be the branch the represents the most current
 version of the software suitable for our platform (in many packages for example this may be the `ros2`
 branch). This is used for nightly and development builds.

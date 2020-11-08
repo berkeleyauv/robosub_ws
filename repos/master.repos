@@ -11,3 +11,7 @@ repositories:
     type: git
     url: https://github.com/berkeleyauv/sub_descriptions.git
     version: master
+  sub_interfaces:
+    type: git
+    url: https://github.com/berkeleyauv/sub_interfaces.git
+    version: master

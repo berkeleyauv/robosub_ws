@@ -1,3 +1,13 @@
+# VCS Repos
+deps
+controls
+simulator
+sub_descriptions
+sub_interfaces
+
+# ROS Build files
+install/
+log/
 devel/
 logs/
 build/
@@ -52,10 +62,3 @@ CATKIN_IGNORE
 
 cmake-build-debug
 .idea
-install
-log
-
-deps
-controls
-simulator
-sub_descriptions
