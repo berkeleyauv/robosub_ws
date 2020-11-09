@@ -1,0 +1,9 @@
+repositories:
+  deps/plankton:
+    type: git
+    url: https://github.com/Liquid-ai/Plankton.git
+    version: master
+  deps/razor_imu:
+    type: git
+    url: https://github.com/berkeleyauv/razor_imu_9dof.git
+    version: ros2

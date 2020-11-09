@@ -1,0 +1,17 @@
+repositories:
+  controls:
+    type: git
+    url: https://github.com/berkeleyauv/controls.git
+    version: master
+  simulator:
+    type: git
+    url: https://github.com/berkeleyauv/simulator.git
+    version: master
+  sub_descriptions:
+    type: git
+    url: https://github.com/berkeleyauv/sub_descriptions.git
+    version: master
+  sub_interfaces:
+    type: git
+    url: https://github.com/berkeleyauv/sub_interfaces.git
+    version: master
