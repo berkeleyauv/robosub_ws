@@ -4,16 +4,16 @@ Top level repository for the UR@B AUV for the Robosub competition
 
 ***
 ## Getting Started
-Start by making sure ROS2 and [vcs tool](https://github.com/dirk-thomas/vcstool) is installed on Ubuntu 18.04. The recommended installation process is by running 
+Start by making sure ROS2 and [vcs tool](https://github.com/dirk-thomas/vcstool) is installed on Ubuntu 18.04. The recommended installation process is to go to the `robosub` directory and run
 
-    scripts/install_scripts/install-ros-eloquent.sh
+    bash scripts/install_scripts/install-ros-eloquent.sh
 
 or you can follow [this](https://index.ros.org/doc/ros2/Installation/Eloquent/Linux-Install-Debians/).
 ***
 UR@B takes advantage of `vcs` in order to pull and manage repositories and dependencies. 
 
 A breakdown of the various `.repos` files is below:
-#### Overlay Repos
+### Overlay Repos
 
 Overlay repos are repositories directly managed by urab and that provide the core software for the platform.
 
@@ -22,8 +22,7 @@ Overlay repos are repositories directly managed by urab and that provide the cor
 **Pro Tip**: To avoid having the keep entering your github username and password for pushing private repos you can run `git config --global credentials.helper store`
 to save your username and password to the machine. However, make sure you only do this on a computer that only you use since it stores your password in unencrypted plaintext.
 
-***
-#### Underlay Repos
+### Underlay Repos
 
 Underlay repos are repositories that are managed primarily by other sources including open source, but are
 required as dependencies for the Overlay repos in a semi-managed state (i.e. `apt install` either do not exist or
@@ -48,12 +47,7 @@ code that is in the master release, I would  run from within `src/` the followin
 **Pro Tip**: If you want to update repositories (fetch remote) installed with vcs simply run `vcs custom --args remote update` in the
 directory with the repositories you wish to update.
 
-Once you have performed the above tasks you will want to finish up by running the `rosdep` command
-to cover any minor deps managed entirely by the ROS2 open source community.
-
-    rosdep install --from-paths src --ignore-src -r -y
-
-You should now be able to successfully run `colcon build --symlink-install` to build your workspace.
+You should now be able to successfully run `colcon build --symlink-install` to build your workspace. Afterwards, do `source install/setup.bash` to make sure the packages are visible to ROS2.
 
 ## Contributing and Code Versioning
 Development should proceed as follows.

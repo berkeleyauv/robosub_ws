@@ -16,3 +16,4 @@ source ~/.bashrc
 sudo apt install -y -qq python3-argcomplete python3-colcon-common-extensions python-rosdep python3-vcstool
 sudo rosdep init
 rosdep update
+rosdep install --from-paths src --ignore-src -r -y
