@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+find . -name .git -type d -execdir bash -c 'basename $PWD && git status && printf "\n"' ';'
+
