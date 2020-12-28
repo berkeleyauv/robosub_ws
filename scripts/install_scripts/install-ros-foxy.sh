@@ -11,6 +11,8 @@ sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture)] http://packages.ros.or
 sudo apt update -y
 sudo apt install -y ros-foxy-desktop
 source /opt/ros/foxy/setup.bash
+echo "source /opt/ros/foxy/setup.bash" >> ~/.bashrc
+echo "source /usr/share/gazebo/setup.sh" >> ~/.bashrc
 sudo apt install -y -qq python3-argcomplete
 sudo apt install -y -qq python3-colcon-common-extensions
 sudo apt-get -qq -y install python-rosdep
