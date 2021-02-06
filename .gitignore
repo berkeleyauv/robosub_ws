@@ -4,6 +4,8 @@ controls
 simulator
 sub_descriptions
 sub_interfaces
+behavior_tree
+sub_behavior
 
 # ROS Build files
 install/
