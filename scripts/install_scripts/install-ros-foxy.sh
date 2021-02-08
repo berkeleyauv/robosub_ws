@@ -31,8 +31,14 @@ rosdep install --from-paths src --ignore-src -r -y
 # Get the directory where robosub is located
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && cd ../../ && pwd )"
 
-# Setup bashrc 
-echo "source /opt/ros/foxy/setup.bash" >> ~/.bashrc
-echo "source /usr/share/gazebo/setup.sh" >> ~/.bashrc
-echo "source $DIR/install/setup.bash" >> ~/.bashrc
-source ~/.bashrc
+# Setup shell file
+SHELLRC="~/.bashrc"
+
+if [ $SHELL = "/bin/zsh" ]; then
+    SHELLRC="~/.zshrc"
+fi
+
+echo "source /opt/ros/foxy/setup.bash" >> $SHELLRC
+echo "source /usr/share/gazebo/setup.sh" >> $SHELLRC
+echo "source $DIR/install/setup.bash" >> $SHELLRC
+source $SHELLRC
