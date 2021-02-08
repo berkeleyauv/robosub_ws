@@ -20,10 +20,10 @@ sudo rosdep init
 rosdep update
 
 # Clone subrepos using VCS
-cd src
+pushd src
 vcs import < ../repos/master.repos
 vcs import < ../repos/deps.repos
-cd ..
+popd
 
 # Install all ROS dependencies using rosdep
 rosdep install --from-paths src --ignore-src -r -y
@@ -33,12 +33,14 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && cd ../../ && pw
 
 # Setup shell file
 SHELLRC="~/.bashrc"
+ENDING="bash"
 
 if [ $SHELL = "/bin/zsh" ]; then
     SHELLRC="~/.zshrc"
+    ENDING="zsh"
 fi
 
-echo "source /opt/ros/foxy/setup.bash" >> $SHELLRC
+echo "source /opt/ros/foxy/setup.$ENDING" >> $SHELLRC
 echo "source /usr/share/gazebo/setup.sh" >> $SHELLRC
-echo "source $DIR/install/setup.bash" >> $SHELLRC
+echo "source $DIR/install/setup.$ENDING" >> $SHELLRC
 source $SHELLRC
