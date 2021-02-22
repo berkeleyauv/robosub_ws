@@ -20,10 +20,8 @@ sudo rosdep init
 rosdep update
 
 # Clone subrepos using VCS
-pushd src
-vcs import < ../repos/master.repos
-vcs import < ../repos/deps.repos
-popd
+vcs import src < repos/master.repos
+vcs import src < repos/deps.repos
 
 # Install all ROS dependencies using rosdep
 rosdep install --from-paths src --ignore-src -r -y
@@ -32,12 +30,12 @@ rosdep install --from-paths src --ignore-src -r -y
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && cd ../../ && pwd )"
 
 # Setup shell file
-SHELLRC="~/.bashrc"
-ENDING="bash"
+SHELLRC=~/.bashrc
+ENDING=bash
 
 if [ $SHELL = "/bin/zsh" ]; then
-    SHELLRC="~/.zshrc"
-    ENDING="zsh"
+    SHELLRC=~/.zshrc
+    ENDING=zsh
 fi
 
 echo "source /opt/ros/foxy/setup.$ENDING" >> $SHELLRC
