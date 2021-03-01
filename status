@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
-find . -name .git -type d -execdir bash -c 'basename $PWD && git status && printf "\n"' ';'
+# Prints directory name in blue, then goes back to white then does git status.
+# I tried simplifying by putting the bash command in a variable, but I couldn't get that to work :/
+find . -name .git -type d -execdir bash -c 'printf "\033[0;34m" && basename ${PWD} && printf "\033[0m" && git status && printf "\n"' ';'
 
