@@ -22,7 +22,7 @@ Make sure you have sourced the `foxy` setup file, `gazebo` setup file, and `robo
 
 1. `ros2 launch simulator robosub.launch` will spawn Gazebo with the RoboSub 2019 world
 2. `ros2 launch sub_descriptions upload_rexrov_default.launch.py x:=10 y:=-10 z:=-10` will spawn in our submarine into Gazebo.
-3. `ros2 launch uuv_control_cascaded_pid key_board_velocity.launch model_name:=rexrov` will start the PID controllers for the sub and the thruster manager.
+3. `ros2 launch uuv_control_cascaded_pids key_board_velocity.launch model_name:=rexrov` will start the PID controllers for the sub and the thruster manager.
 4. `ros2 run uuv_teleop vehicle_keyboard_teleop.py --ros-args -r output:=/rexrov/cmd_vel` to use a keyboard to send commands to the motor controllers.
 
 ## Position PID Mode
