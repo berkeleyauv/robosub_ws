@@ -1,7 +1,7 @@
 repositories:
-  deps/plankton:
+  deps/Plankton:
     type: git
-    url: https://github.com/Liquid-ai/Plankton.git
+    url: https://github.com/berkeleyauv/Plankton.git
     version: master
   deps/BehaviorTree.CPP:
     type: git
