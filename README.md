@@ -29,8 +29,9 @@ Make sure you have sourced the `foxy` setup file, `gazebo` setup file, and `robo
 
 1. `ros2 launch simulator robosub.launch` will spawn Gazebo with the RoboSub 2019 world
 2. `ros2 launch sub_descriptions upload_rexrov_default.launch.py x:=10 y:=-10 z:=-10` will spawn in our submarine into Gazebo.
-3. `ros2 launch uuv_control_cascaded_pids position_hold.launch` will start the PID nodes and thruster manager.
-4. `ros2 run controls pose_publisher.py` will ask for the `cmd_pose`.
+3. `ros2 launch uuv_control_cascaded_pids position_hold.launch model_name:=rexrov` will start the PID nodes and thruster manager.
+    Alternatively, you can just run the orienatation controller with `ros2 launch controls orientation_hold.launch model_name:=rexrov`.
+4. `ros2 run controls pose_publisher` will ask for the `cmd_pose`.
 
 # More Info
 
