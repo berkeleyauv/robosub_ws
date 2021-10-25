@@ -19,6 +19,12 @@ sudo apt install -y python3-argcomplete python3-colcon-common-extensions python3
 sudo rosdep init
 rosdep update
 
+# Install Gazebo 11 and ROS Gazebo package
+sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
+wget https://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
+sudo apt update
+sudo apt install -y gazebo11 libgazebo11-dev ros-foxy-gazebo-ros-pkgs
+
 # Clone subrepos using VCS
 vcs import src < repos/master.repos
 vcs import src < repos/deps.repos
