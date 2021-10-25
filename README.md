@@ -8,7 +8,7 @@ The recommended installation process is to go to the `robosub` directory and run
 
     bash scripts/install_scripts/install-ros-foxy.sh
 
-which will install ROS2 Foxy, Gazebo 11, download the necessary repositories, install the requirements using `rosdep`, and setup your `~/.bashrc` for future use. Then, run 
+which will install ROS2 Foxy, Gazebo 11, download the necessary repositories, install the requirements using `rosdep`, and setup your `~/.bashrc` for future use. Then, run
 
     colcon build --symlink-install
 
@@ -22,14 +22,14 @@ Make sure you have sourced the `foxy` setup file, `gazebo` setup file, and `robo
 
 1. `ros2 launch simulator robosub.launch` will spawn Gazebo with the RoboSub 2019 world
 2. `ros2 launch sub_descriptions upload_rexrov_default.launch.py x:=10 y:=-10 z:=-10` will spawn in our submarine into Gazebo.
-3. `ros2 launch uuv_control_cascaded_pids key_board_velocity.launch model_name:=rexrov` will start the PID controllers for the sub and the thruster manager.
+3. `ros2 launch uuv_control_cascaded_pid key_board_velocity.launch model_name:=rexrov` will start the PID controllers for the sub and the thruster manager.
 4. `ros2 run uuv_teleop vehicle_keyboard_teleop.py --ros-args -r output:=/rexrov/cmd_vel` to use a keyboard to send commands to the motor controllers.
 
 ## Position PID Mode
 
 1. `ros2 launch simulator robosub.launch` will spawn Gazebo with the RoboSub 2019 world
 2. `ros2 launch sub_descriptions upload_rexrov_default.launch.py x:=10 y:=-10 z:=-10` will spawn in our submarine into Gazebo.
-3. `ros2 launch uuv_control_cascaded_pids position_hold.launch model_name:=rexrov` will start the PID nodes and thruster manager.
+3. `ros2 launch uuv_control_cascaded_pid position_hold.launch model_name:=rexrov` will start the PID nodes and thruster manager.
     Alternatively, you can just run the orienatation controller with `ros2 launch controls orientation_hold.launch model_name:=rexrov`.
 4. `ros2 run controls pose_publisher` will ask for the `cmd_pose`.
 
@@ -37,7 +37,7 @@ Make sure you have sourced the `foxy` setup file, `gazebo` setup file, and `robo
 
 ## VCS
 ***
-UR@B takes advantage of `vcs` in order to pull and manage repositories and dependencies. 
+UR@B takes advantage of `vcs` in order to pull and manage repositories and dependencies.
 
 
 > **Pro Tip**: To avoid having the keep entering your github username and password for pushing private repos you can run `git config --global credentials.helper store` to save your username and password to the machine. However, make sure you only do this on a computer that only you use since it stores your password in unencrypted plaintext.
@@ -64,7 +64,7 @@ Remember to add any new repos that are added in one of the `.repos` files to the
 
 In order to import the repos, run `vcs import < {file}.repos` in the `src/` folder. Usually, you will want to do the following
 
-    vcs import < ../repos/master.repos 
+    vcs import < ../repos/master.repos
     vcs import < ../repos/deps.repos
 
 >**Pro Tip**: If you want to update repositories (fetch remote) installed with vcs simply run `vcs custom --args remote update` in the directory with the repositories you wish to update.
