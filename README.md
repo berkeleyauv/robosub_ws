@@ -1,6 +1,7 @@
-# robosub
+# robosub_ws
 
 This is the top level repository for the UR@B AUV for the Robosub competition.
+It is meant to be cloned as a ROS2 workspace, and contains the scripts to install all necessary packages.
 
 ***
 # Getting Started
