@@ -11,20 +11,30 @@ The recommended installation process is to go to the `robosub` directory and run
 
 which will install ROS2 Foxy, Gazebo 11, download the necessary repositories, install the requirements using `rosdep`, and setup your `~/.bashrc` for future use. 
 First source ros2
+
     source /opt/ros/foxy/setup.bash
+    
 Then, run
+
     colcon build --symlink-install
 
 which will build the necessary files.
 
 # Running the sub
 
-Make sure you have sourced the `foxy` setup file, `gazebo` setup file, and `robosub` setup file already (this is done for you in the install script). Then run each command in a different terminal. We recommend using [tmux](https://github.com/tmux/tmux/wiki) to run the commands in separate panes so you can see all the outputs.
+Make sure you have sourced the `foxy` setup file, `gazebo` setup file, and `robosub` setup file already (this is done for you in the install script).
+From your robosub workspace you can run
 
-## Teleop Mode
+    source ./install/setup.bash
+    source ./install/local_setup.bash
+
+Then run each of the following command in a different terminal. We recommend using [tmux](https://github.com/tmux/tmux/wiki) to run the commands in separate panes so you can see all the outputs, though it is fine to use the default terminal.
 
 1. `ros2 launch simulator robosub.launch` will spawn Gazebo with the RoboSub 2019 world
 2. `ros2 launch sub_descriptions upload_rexrov_default.launch.py x:=10 y:=-10 z:=-10` will spawn in our submarine into Gazebo.
+
+## Teleop Mode
+
 3. `ros2 launch uuv_control_cascaded_pid key_board_velocity.launch model_name:=rexrov` will start the PID controllers for the sub and the thruster manager.
 4. `ros2 run uuv_teleop vehicle_keyboard_teleop.py --ros-args -r output:=/rexrov/cmd_vel` to use a keyboard to send commands to the motor controllers.
 
