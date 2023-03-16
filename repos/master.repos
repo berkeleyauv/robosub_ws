@@ -19,7 +19,3 @@ repositories:
     type: git
     url: https://github.com/berkeleyauv/sub_behavior.git
     version: master
-  behavior_tree:
-    type: git
-    url: https://github.com/berkeleyauv/behavior_tree.git
-    version: master
