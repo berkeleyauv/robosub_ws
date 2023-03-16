@@ -9,8 +9,10 @@ The recommended installation process is to go to the `robosub` directory and run
 
     bash scripts/install_scripts/install-ros-foxy.sh
 
-which will install ROS2 Foxy, Gazebo 11, download the necessary repositories, install the requirements using `rosdep`, and setup your `~/.bashrc` for future use. Then, run
-
+which will install ROS2 Foxy, Gazebo 11, download the necessary repositories, install the requirements using `rosdep`, and setup your `~/.bashrc` for future use. 
+First source ros2
+    source /opt/ros/foxy/setup.bash
+Then, run
     colcon build --symlink-install
 
 which will build the necessary files.
