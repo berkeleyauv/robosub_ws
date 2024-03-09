@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+# Setup language locales
+sudo locale-gen en_US en_US.UTF-8
+sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+# Add ROS2 apt key
+sudo apt update && sudo apt install curl gnupg2 lsb-release
+curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture)] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/ros2-latest.list'
+
+# Install ROS2 Humble
+sudo apt update
+sudo apt install -y ros-humble-desktop
+
+# Install ROS build tools
+sudo apt install -y python3-argcomplete python3-colcon-common-extensions python3-rosdep python3-vcstool
+sudo rosdep init
+rosdep update
+
+# Install Gazebo 11 and ROS Gazebo package
+sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
+wget https://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
+sudo apt update
+sudo apt install -y gazebo11 libgazebo11-dev ros-humble-gazebo-ros-pkgs
+
+# Clone subrepos using VCS
+vcs import src < repos/master.repos
+vcs import src < repos/deps.repos
+
+# Install all ROS dependencies using rosdep
+rosdep install --from-paths src --ignore-src -r -y
+
+# Get the directory where robosub is located
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && cd ../../ && pwd )"
+
+# Setup shell file
+SHELLRC=~/.bashrc
+ENDING=bash
+
+if [ $SHELL = "/bin/zsh" ]; then
+    SHELLRC=~/.zshrc
+    ENDING=zsh
+fi
+
+echo "source /opt/ros/humble/setup.$ENDING" >> $SHELLRC
+echo "source /usr/share/gazebo/setup.sh" >> $SHELLRC
+echo "source $DIR/install/setup.$ENDING" >> $SHELLRC
+source $SHELLRC
