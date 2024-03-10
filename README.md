@@ -8,7 +8,9 @@ It is meant to be cloned as a ROS2 workspace, and contains the scripts to instal
 [Windows with ubuntu 20] The recommended installation process is to go to the `robosub` directory and run
 
     bash scripts/install_scripts/install-ros-foxy.sh
+    
 [Mac with ubuntu 22]
+
     bash scripts/install_scripts/install-ros-foxy.sh
 
 which will install ROS2 Foxy, Gazebo 11, download the necessary repositories, install the requirements using `rosdep`, and setup your `~/.bashrc` for future use. Then, run
