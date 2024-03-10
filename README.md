@@ -11,7 +11,7 @@ It is meant to be cloned as a ROS2 workspace, and contains the scripts to instal
     
 [Mac with ubuntu 22]
 
-    bash scripts/install_scripts/install-ros-foxy.sh
+    bash scripts/install_scripts/install-ros-humble.sh
 
 which will install ROS2 Foxy, Gazebo 11, download the necessary repositories, install the requirements using `rosdep`, and setup your `~/.bashrc` for future use. Then, run
 
